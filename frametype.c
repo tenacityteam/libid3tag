@@ -357,7 +357,7 @@ __inline
 const struct id3_frametype *
 id3_frametype_lookup (str, len)
      register const char *str;
-     register unsigned int len;
+     register size_t len;
 {
   static const struct id3_frametype wordlist[] =
     {

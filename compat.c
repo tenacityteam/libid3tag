@@ -151,7 +151,7 @@ __inline
 const struct id3_compat *
 id3_compat_lookup (str, len)
      register const char *str;
-     register unsigned int len;
+     register size_t len;
 {
   static const struct id3_compat wordlist[] =
     {
