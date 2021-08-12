@@ -28,8 +28,10 @@ add_library(id3tag
     util.c
     version.c
 )
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/id3tag.h.in ${CMAKE_CURRENT_BINARY_DIR}/id3tag.h @ONLY)
 target_include_directories(id3tag PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 if(WIN32 AND BUILD_SHARED_LIBS)
@@ -83,7 +85,7 @@ install(TARGETS id3tag
 
 # Header files
 install(
-  FILES "${CMAKE_CURRENT_SOURCE_DIR}/id3tag.h"
+  FILES "${CMAKE_CURRENT_BINARY_DIR}/id3tag.h"
   DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
