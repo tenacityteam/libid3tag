@@ -36,6 +36,11 @@ if(WIN32 AND BUILD_SHARED_LIBS)
     set_target_properties(id3tag PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
+set_target_properties(id3tag PROPERTIES
+  VERSION ${CMAKE_PROJECT_VERSION}
+  SOVERSION ${CMAKE_PROJECT_VERSION}
+)
+
 find_package(ZLIB REQUIRED)
 target_link_libraries(id3tag PRIVATE ZLIB::ZLIB)
 
