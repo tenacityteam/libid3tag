@@ -41,6 +41,12 @@ set_target_properties(id3tag PROPERTIES
   SOVERSION ${CMAKE_PROJECT_VERSION}
 )
 
+include(CheckIncludeFile)
+check_include_file(sys/stat.h HAVE_SYS_STAT_H)
+if(HAVE_SYS_STAT_H)
+  target_compile_definitions(id3tag PRIVATE HAVE_SYS_STAT_H)
+endif()
+
 find_package(ZLIB REQUIRED)
 target_link_libraries(id3tag PRIVATE ZLIB::ZLIB)
 
