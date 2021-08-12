@@ -19,10 +19,6 @@
  * $Id: tag.c,v 1.20 2004/02/17 02:04:10 rob Exp $
  */
 
-# ifdef HAVE_CONFIG_H
-#  include "config.h"
-# endif
-
 # include "global.h"
 
 # include <string.h>
