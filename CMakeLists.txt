@@ -71,7 +71,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/packaging/libid3tag.pc.in
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/packaging/libid3tag.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 
 # CMake config
-set(ID3TAG_INSTALL_CMAKEDIR "lib/cmake/id3tag")
+set(ID3TAG_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/id3tag")
 install(
   EXPORT id3tagTargets
   FILE id3tagTargets.cmake
