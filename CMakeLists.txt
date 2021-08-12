@@ -47,6 +47,22 @@ if(HAVE_SYS_STAT_H)
   target_compile_definitions(id3tag PRIVATE HAVE_SYS_STAT_H)
 endif()
 
+check_include_file(unistd.h HAVE_UNISTD_H)
+if(HAVE_UNISTD_H)
+  target_compile_definitions(id3tag PRIVATE HAVE_UNISTD_H)
+endif()
+
+check_include_file(assert.h HAVE_ASSERT_H)
+if(HAVE_ASSERT_H)
+  target_compile_definitions(id3tag PRIVATE HAVE_ASSERT_H)
+endif()
+
+include(CheckFunctionExists)
+check_function_exists(ftruncate HAVE_FTRUNCATE)
+if(HAVE_FTRUNCATE)
+  target_compile_definitions(id3tag PRIVATE HAVE_FTRUNCATE)
+endif()
+
 find_package(ZLIB REQUIRED)
 target_link_libraries(id3tag PRIVATE ZLIB::ZLIB)
 
