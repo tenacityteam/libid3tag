@@ -68,18 +68,18 @@ install(
   NAMESPACE id3tag::
   DESTINATION "${ID3TAG_INSTALL_CMAKEDIR}"
 )
-configure_package_config_file(id3tagConfig.cmake.in
-  "${CMAKE_CURRENT_BINARY_DIR}/id3tagConfig.cmake"
+configure_package_config_file(packaging/id3tagConfig.cmake.in
+  "${CMAKE_CURRENT_BINARY_DIR}/packaging/id3tagConfig.cmake"
   INSTALL_DESTINATION "${ID3TAG_INSTALL_CMAKEDIR}"
 )
 write_basic_package_version_file(
-  "${CMAKE_CURRENT_BINARY_DIR}/id3tagConfigVersion.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/packaging/id3tagConfigVersion.cmake"
   VERSION "${CMAKE_PROJECT_VERSION}"
   COMPATIBILITY SameMajorVersion
 )
 install(
   FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/id3tagConfig.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/id3tagConfigVersion.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/packaging/id3tagConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/packaging/id3tagConfigVersion.cmake"
   DESTINATION "${ID3TAG_INSTALL_CMAKEDIR}"
 )
