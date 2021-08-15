@@ -66,7 +66,7 @@ if(HAVE_FTRUNCATE)
 endif()
 
 find_package(ZLIB REQUIRED)
-target_link_libraries(id3tag PRIVATE ZLIB::ZLIB)
+target_link_libraries(id3tag PUBLIC ZLIB::ZLIB)
 
 #
 # Installation
