@@ -90,9 +90,9 @@ install(
 )
 
 # pkgconfig
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/packaging/libid3tag.pc.in
-  ${CMAKE_CURRENT_BINARY_DIR}/packaging/libid3tag.pc @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/packaging/libid3tag.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/packaging/id3tag.pc.in
+  ${CMAKE_CURRENT_BINARY_DIR}/packaging/id3tag.pc @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/packaging/id3tag.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 
 # CMake config
 set(ID3TAG_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/id3tag")
