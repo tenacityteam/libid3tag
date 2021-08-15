@@ -6,6 +6,11 @@
 
 ===============================================================================
 
+Version 0.16.1
+  * Fix exported CMake config file
+  * Fix pkgconfig file name to match Linux distro packages
+    (id3tag instead of libid3tag).
+
 Version 0.16.0
   * Add CMake build system
   * Remove autotools
