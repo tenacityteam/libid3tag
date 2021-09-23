@@ -8,16 +8,38 @@ include(GNUInstallDirs)
 #
 # Build
 #
+add_custom_command(
+    COMMAND sed -n -f genre.dat.sed genre.dat.in > ${CMAKE_CURRENT_BINARY_DIR}/genre.dat
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/genre.dat
+    MAIN_DEPENDENCY genre.dat.in
+    DEPENDS genre.dat.sed
+)
+
+find_program(GPERF NAMES gperf)
+
+add_custom_command(
+    COMMAND ${GPERF} -tCcTonD --output-file=${CMAKE_CURRENT_BINARY_DIR}/compat.c -K id -N id3_compat_lookup -s -3 -k '*' ${CMAKE_CURRENT_SOURCE_DIR}/compat.gperf
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/compat.c
+    MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/compat.gperf
+)
+
+add_custom_command(
+    COMMAND ${GPERF} -tCcTonD --output-file=${CMAKE_CURRENT_BINARY_DIR}/frametype.c -K id -N id3_frametype_lookup -s -3 -k '*' ${CMAKE_CURRENT_SOURCE_DIR}/frametype.gperf
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/frametype.c
+    MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/frametype.gperf
+)
 
 add_library(id3tag
-    compat.c
+    ${CMAKE_CURRENT_BINARY_DIR}/compat.c
     crc.c
     debug.c
     field.c
     file.c
     frame.c
-    frametype.c
+    ${CMAKE_CURRENT_BINARY_DIR}/frametype.c
     genre.c
+    ${CMAKE_CURRENT_BINARY_DIR}/genre.dat
     latin1.c
     parse.c
     render.c

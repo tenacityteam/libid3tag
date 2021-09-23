@@ -14,17 +14,19 @@ jobs:
             os: ubuntu-latest
             install_dir: ~/libid3tag
             cmake_extras: -DCMAKE_BUILD_TYPE=RelWithDebInfo
+            vcpkg_triplet: x64-linux
           - name: macOS
             os: macos-latest
             install_dir: ~/libid3tag
             cmake_extras: -DCMAKE_BUILD_TYPE=RelWithDebInfo
+            vcpkg_triplet: x64-osx
           - name: Windows
             os: windows-latest
             install_dir: C:\libid3tag
             cmake_config: --config RelWithDebInfo
             cmake_extras: >-
               -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake
-            vcpkg_tripet: x64-windows
+            vcpkg_triplet: x64-windows
             vcpkg_binary_cache: C:\Users\runneradmin\AppData\Local\vcpkg\archives
 
     name: ${{ matrix.name }}
@@ -42,15 +44,14 @@ jobs:
           vcpkg-${{ github.head_ref }}
           vcpkg
     - name: Install dependencies
-      if: startsWith(matrix.os, 'windows')
-      run: vcpkg install zlib
+      run: vcpkg install zlib gperf
       env:
-        VCPKG_DEFAULT_TRIPLET: ${{ matrix.vcpkg_tripet }}
+        VCPKG_DEFAULT_TRIPLET: ${{ matrix.vcpkg_triplet }}
     - name: Configure
       run: >-
         cmake
         -D CMAKE_INSTALL_PREFIX=${{ matrix.install_dir }}
-        -D VCPKG_TARGET_TRIPLET=${{ matrix.vcpkg_tripet }}
+        -D VCPKG_TARGET_TRIPLET=${{ matrix.vcpkg_triplet }}
         ${{ matrix.cmake_extras }}
         -S . -B build
     - name: Build
