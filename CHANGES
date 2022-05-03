@@ -6,6 +6,9 @@
 
 ===============================================================================
 
+Version 0.16.2
+  * Fix null pointer dereference in id3_ucs4_length (CVE-2017-11550)
+
 Version 0.16.1
   * Fix exported CMake config file
   * Fix pkgconfig file name to match Linux distro packages
